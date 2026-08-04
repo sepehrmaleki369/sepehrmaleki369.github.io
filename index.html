@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sepehr Maleki - Resume</title>
+    <title>Sepehr Maleki</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0.5in;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #222;
         }
-        h1, h2 {
+        h1 {
             text-align: center;
+            margin-bottom: 4px;
+        }
+        h2 {
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 4px;
+            margin-top: 24px;
+        }
+        p.contact {
+            text-align: center;
+            margin-top: 4px;
         }
         hr {
             margin-top: 20px;
@@ -24,13 +38,26 @@
             margin: 0;
             padding-left: 20px;
         }
+        li {
+            margin-bottom: 4px;
+        }
+        a {
+            color: #1a0dab;
+        }
+        .job-title {
+            margin-bottom: 4px;
+        }
     </style>
 </head>
 <body>
 
 <h1>Sepehr Maleki</h1>
-<p style="text-align:center;">
-    sepehr.maleki@bilkent.edu.tr | Turkey, Ankara | <a href="https://github.com/sepehrmaleki369">GitHub</a> | <a href="https://linkedin.com/in/sepehr-maleki-27abbb198">LinkedIn</a> | <a href="https://www.researchgate.net/profile/Sepehr-Maleki-3">ResearchGate</a>
+<p class="contact">
+    sepehrmaleki88@gmail.com | Ankara, Turkey |
+    <a href="https://github.com/sepehrmaleki369">GitHub</a> |
+    <a href="https://linkedin.com/in/sepehr-maleki-27abbb198">LinkedIn</a> |
+    <a href="https://scholar.google.com/citations?user=RHcOuWMAAAAJ">Google Scholar</a> |
+    <a href="https://www.researchgate.net/profile/Sepehr-Maleki-3">ResearchGate</a>
 </p>
 
 <hr>
@@ -38,135 +65,122 @@
 <div class="section">
     <h2>RESEARCH INTERESTS</h2>
     <ul>
-        <li>Computer Vision</li>
-        <li>Machine Learning and Artificial Intelligence</li>
-        <li>Bioinformatics</li>
-        <li>Data Science</li>
+        <li>Uncertainty Quantification in Deep Learning</li>
+        <li>Medical Image Segmentation and Analysis</li>
+        <li>Computer Vision and Machine Learning</li>
+        <li>Bioinformatics and Computational Biology</li>
         <li>Biomedical Informatics</li>
-        <li>Biomedical Imaging and Visualization</li>
     </ul>
 </div>
 
 <div class="section">
     <h2>EDUCATION</h2>
-    <p><strong>Bilkent University</strong> - Ankara, Turkey<br>
-    <em>Master of Science in Computer Engineering</em><br>
-    Start: Sep 2024</p>
+    <p class="job-title"><strong>Bilkent University</strong> — Ankara, Turkey<br>
+    <em>Master of Science in Computer Engineering</em> | GPA: 3.63/4.00<br>
+    Sep 2024 – Present (Expected graduation: Summer 2027)</p>
 
-    <p><strong>University of Tabriz</strong> - Tabriz, Iran<br>
-    <em>B.Sc in Computer Science</em><br>
-    Cumulative GPA: 18/20<br>
-    Sep 2019 - Apr 2024</p>
-
-    <p><strong>Shahid Motahari High School</strong> - Lorestan, Iran<br>
-    <em>Diploma in Experimental Sciences</em><br>
-    Cumulative GPA: 19.32/20<br>
-    Sep 2015 - Sep 2019</p>
+    <p class="job-title"><strong>University of Tabriz</strong> — Tabriz, Iran<br>
+    <em>B.Sc in Computer Science</em> | GPA: 16.26/20<br>
+    Sep 2019 – Apr 2024</p>
 </div>
 
 <div class="section">
     <h2>RESEARCH EXPERIENCE</h2>
-    <p><strong>Neurovision Lab at Bilkent University</strong> - Ankara, Turkey<br>
-    <em>Computer Vision Researcher</em> (Sep 2024 - Present)</p>
+
+    <p class="job-title"><strong>Bilkent University</strong> — Ankara, Turkey<br>
+    <em>Computer Vision Researcher</em> (Sep 2024 – Present)</p>
     <ul>
-        <li>Conducting research on uncertainty estimation and road detection using ribbon snakes, under the supervision of Dr. Doruk Oner, in collaboration with EPFL.</li>
+        <li>Developing a two-component uncertainty decomposition framework for medical image segmentation: epistemic uncertainty via post-hoc SVD-based weight perturbation, and aleatoric uncertainty via the reconstruction residual of a masked-autoencoder-pretrained decoder branch. Validated on ISIC 2018, Kvasir-SEG, and Oxford-IIIT Pets.</li>
+        <li>First-author paper "Decorrelation Is Not Disentanglement: Decoupled Aleatoric and Epistemic Uncertainty in Segmentation" — under review at NeurIPS 2026.</li>
+        <li>Collaborating on a TÜBİTAK-funded project developing automated grading pipelines for handwritten student responses using NLP and OCR.</li>
     </ul>
 
-    <p><strong>Research Institute for Gastroenterology and Liver Diseases (RIGLD) at Shahid Beheshti University of Medical Sciences</strong> - Tehran, Iran<br>
-    <em>Researcher</em> (2020 - Sep 2024)</p>
+    <p class="job-title"><strong>Research Institute for Gastroenterology and Liver Diseases (RIGLD), Shahid Beheshti University of Medical Sciences</strong> — Tehran, Iran<br>
+    <em>Computational Researcher</em> (2020 – Sep 2024)</p>
     <ul>
-        <li>Collaborated on multiple projects within the Celiac Disease Department under the guidance of Professor Mohammad Rostami-Nejad.</li>
-        <li>Actively contributed to analyzing biological networks in Celiac Disease, identifying key genes, and exploring AI applications for Celiac Disease management.</li>
-        <li>Co-authored papers:
-            <ul>
-                <li><em>The link between gluten intake and the risk of cancers.</em></li>
-                <li><em>Metabolomics and lipidomics signature in celiac disease; a review.</em></li>
-                <li><em>Application of Artificial Intelligence in Celiac Disease: from diagnosis to patient follow-up.</em></li>
-            </ul>
-        </li>
+        <li>Worked on metabolomics, lipidomics, and biological network analysis in celiac disease and gastrointestinal disorders under Prof. Mohammad Rostami-Nejad.</li>
+        <li>Used Cytoscape, StringApp, and Python (Pandas, NumPy, Matplotlib) for biological network analysis and visualization.</li>
+        <li>Conducted meta-analysis in R for a systematic review on nutrition therapy in ulcerative colitis; findings presented at the 2023 United European Gastroenterology Week.</li>
+        <li>Co-authored three published journal papers and one paper currently under review.</li>
     </ul>
 </div>
 
 <div class="section">
-    <h2>HONORS & AWARDS</h2>
-    <p><strong>Fully Funded Scholarships</strong> - Sep 2024<br>
-    Awarded fully funded scholarships for Master’s studies at Bilkent University, Koç University, Arizona State University, and the University of Oklahoma.</p>
+    <h2>PUBLICATIONS</h2>
 
-    <p><strong>Thesis Publication on IEEE</strong> - 2022<br>
-    <em>Optimizing GoogleNet using New Connections and Auxiliary Layers Information:</em> A comprehensive exploration of optimizing GoogLeNet architecture through novel connections and leveraging auxiliary layers information, contributing to advancements in deep learning efficiency.</p>
+    <p><strong>Under Review:</strong></p>
+    <ul>
+        <li>Maleki, S. <em>Decorrelation Is Not Disentanglement: Decoupled Aleatoric and Epistemic Uncertainty in Segmentation.</em> Submitted to NeurIPS 2026. (First author)</li>
+        <li>Sartie, S., Sheth, A., Maleki, S., Mu, C., Laing, B., Rostami, K. <em>Nutrition Therapy in Ulcerative Colitis: A Systematic Review and Meta-Analysis.</em> Submitted to Nutrients, 2026.</li>
+    </ul>
 
-    <p><strong>University Top Rank Student</strong> - 2019<br>
-    Ranked 1st among nearly 100 Computer Science and Mathematics students (freshmen) at University of Tabriz.</p>
+    <p><strong>Conference Papers:</strong></p>
+    <ul>
+        <li>Maleki, S. and Izadkhah, H. (2022). <em>Optimizing GoogleNet using New Connections and Auxiliary Layers Information.</em> ICSPIS 2022, IEEE. (First author)</li>
+        <li>Maleki, S. and Izadkhah, H. (2023). <em>Vehicle Detection using Optimized GoogLeNet.</em> ICAISV 2023. (First author, poster)</li>
+    </ul>
 
-    <p><strong>Ranked among Top 1% in National University Entrance Exam</strong> - 2019<br>
-    Ranked among the top 1% out of 140,000 students in the National University Entrance Exam.</p>
+    <p><strong>Journal Papers:</strong></p>
+    <ul>
+        <li>Rostami-Nejad, M. et al. (2024). <em>Metabolomics and lipidomics signature in celiac disease; a review.</em> Clinical and Experimental Medicine.</li>
+        <li>Mahmoudi Ghehsareh, M. et al. (2023). <em>Application of Artificial Intelligence in Celiac Disease: from diagnosis to patient follow-up.</em> Iranian Journal of Blood and Cancer.</li>
+        <li>Rostami-Nejad, M. et al. (2024). <em>The link between gluten intake and the risk of cancers.</em> Gastroenterology and Hepatology From Bed to Bench (GHFBB).</li>
+    </ul>
+</div>
 
-    <p><strong>Accepted at Sharif University of Technology and Amirkabir University of Technology</strong> - 2019<br>
-    Accepted into Computer Science and Electrical Engineering programs through the university entrance exam.</p>
-
-    <p><strong>High School Top Rank Student</strong> - 2014 - 2018<br>
-    Ranked 1st among 90 students at Shahid Motahari High School for 4 years.</p>
+<div class="section">
+    <h2>HONORS &amp; AWARDS</h2>
+    <ul>
+        <li><strong>Fully Funded Master's Scholarships</strong> (2024) — Bilkent University, Koç University, Arizona State University, University of Oklahoma.</li>
+        <li><strong>Top Rank Student</strong> (2019) — Ranked 1st among Computer Science freshmen at University of Tabriz.</li>
+        <li><strong>National University Entrance Exam</strong> (2019) — Ranked in the top 1% out of 140,000 students.</li>
+        <li><strong>Accepted at Sharif University of Technology and Amirkabir University of Technology</strong> (2019).</li>
+        <li><strong>High School Top Rank Student</strong> (2014–2018) — Ranked 1st among 90 students at Shahid Motahari High School for 4 years.</li>
+        <li><strong>Olympiad Judge</strong> — Vanda 2020 (International Science Olympiad) and IJMO 2020 (International Junior Math Olympiad).</li>
+    </ul>
 </div>
 
 <div class="section">
     <h2>TEACHING</h2>
-    <p><strong>Teaching assistant at University Of Tabriz</strong> for various courses:</p>
+    <p><strong>Teaching Assistant — Bilkent University:</strong></p>
     <ul>
-        <li><strong>Calculus 1</strong> - Fall 2019 (Instructor: Dr. Davood Ahmadian)</li>
-        <li><strong>Combinations</strong> - Fall 2020 (Instructor: Dr. Afshin Behmaram)</li>
-        <li><strong>Statistics and Probability</strong> - Spring 2023 (Instructor: Dr. Roghaye Makoei)</li>
-        <li><strong>Calculus 2</strong> - Spring 2021 (Instructor: Prof. Fariba Bahrami)</li>
-        <li><strong>Data Structures</strong> - Fall 2021 (Instructor: Dr. Habib Izadkhah)</li>
-        <li><strong>Computer Graphics</strong> - Spring 2023 (Instructor: Dr. Behzad Poormahmood)</li>
+        <li>Algorithms and Programming I (CS101) — Spring 2026</li>
+        <li>Introduction to Data Analysis for Social Sciences (CS125) — Spring 2025</li>
+        <li>Introduction to Computer Applications and Programming (CS121) — Fall 2024</li>
+    </ul>
+
+    <p><strong>Teaching Assistant — University of Tabriz:</strong></p>
+    <ul>
+        <li>Calculus 1 — Fall 2019</li>
+        <li>Combinations — Fall 2020</li>
+        <li>Calculus 2 — Spring 2021</li>
+        <li>Data Structures — Fall 2021</li>
+        <li>Statistics and Probability — Spring 2023</li>
+        <li>Computer Graphics — Spring 2023</li>
     </ul>
 </div>
 
 <div class="section">
     <h2>SKILLS</h2>
-    <p><strong>Top Skills:</strong> Deep Learning, Bioinformatics, Data Analysis</p>
-    <p><strong>Tools & Technologies:</strong> PyTorch, Keras, Python, C, R, STRING database, Cytoscape, NoSQL, MySQL, IBM Watson, IBM Cloud, IBM Db2, GitHub</p>
-</div>
-
-<div class="section">
-    <h2>PUBLICATIONS</h2>
-    <p><strong>Conference Papers:</strong></p>
-    <ul>
-        <li>Maleki, S. and Izadkhah, H., 2022, December. <em>Optimizing GoogleNet using New Connections and Auxiliary Layers Information</em>. In 2022 8th Iranian Conference on Signal Processing and Intelligent Systems (ICSPIS) (pp. 1-6). IEEE.</li>
-        <li>Maleki, S. and Izadkhah, H., 2023, May. <em>Vehicle Detection using Optimized GoogLeNet</em>. In International Conference on Artificial Intelligence and Smart Vehicle (ICAISV).</li>
-    </ul>
-    <p><strong>Journal Papers:</strong></p>
-    <ul>
-        <li>Rostami-Nejad, M. et al., 2024 Feb. <em>Metabolomics and lipidomics signature in celiac disease; a review</em>. Clinical and Experimental Medicine Journal.</li>
-        <li>Ghehsareh, M. M. et al., 2023 Oct. <em>Application of Artificial Intelligence in Celiac Disease: from diagnosis to patient follow-up</em>. Iranian Journal of Blood and Cancer.</li>
-        <li>Rostami-Nejad, M. et al., 2024 Feb. <em>The link between gluten intake and the risk of cancers</em>. Gastroenterology and Hepatology From Bed to Bench Journal (GHFBB).</li>
-        <li>Rostami, K. et al., 2023 Oct. <em>Nutrition Therapy in Ulcerative Colitis, A Systematic Review</em>. United European Gastroenterology Journal 2023; 11 (Supplement 8).</li>
-    </ul>
+    <p><strong>Top Skills:</strong> Deep Learning, Uncertainty Quantification, Medical Image Analysis, Bioinformatics, Data Analysis</p>
+    <p><strong>Tools &amp; Technologies:</strong> PyTorch, Keras, Python, R, C, Cytoscape, STRING database, NoSQL, MySQL, GitHub</p>
 </div>
 
 <div class="section">
     <h2>LANGUAGES</h2>
     <ul>
-        <li>Farsi: Native Language.</li>
-        <li>English: Professional proficiency. TOEFL iBT Score: 94.</li>
-        <li>German: Elementary proficiency.</li>
-        <li>Turkish: Elementary proficiency.</li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2>INTERESTS AND HOBBIES</h2>
-    <ul>
-        <li><strong>Kickboxing:</strong> Regular kickboxing practice has honed my discipline, perseverance, and focus.</li>
-        <li><strong>Hiking:</strong> Hiking instilled adaptability and an appreciation for nature.</li>
+        <li>Persian: Native</li>
+        <li>English: Professional proficiency — TOEFL iBT: 94</li>
+        <li>Turkish: Elementary</li>
+        <li>German: Elementary</li>
     </ul>
 </div>
 
 <div class="section">
     <h2>ACADEMIC REFEREES</h2>
     <ul>
-        <li>Doruk Oner: doruk.oner@bilkent.edu.tr</li>
         <li>Kamran Rostami: kamran.rostami@midcentraldhb.govt.nz</li>
-        <li>Mohammad Rostami Nejad: m.rostamii@sbmu.ac.ir</li>
+        <li>Mohammad Rostami-Nejad: m.rostamii@sbmu.ac.ir</li>
         <li>Habib Izadkhah: izadkhah@tabrizu.ac.ir</li>
     </ul>
 </div>
