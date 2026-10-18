@@ -12,6 +12,7 @@
             margin-left: auto;
             margin-right: auto;
             color: #222;
+            line-height: 1.45;
         }
         h1 {
             text-align: center;
@@ -21,6 +22,10 @@
             border-bottom: 1px solid #aaa;
             padding-bottom: 4px;
             margin-top: 24px;
+        }
+        h3 {
+            font-size: 1em;
+            margin: 14px 0 4px;
         }
         p.contact {
             text-align: center;
@@ -38,6 +43,13 @@
             margin: 0;
             padding-left: 20px;
         }
+        ol.projects {
+            margin: 4px 0 0;
+            padding-left: 22px;
+        }
+        ol.projects > li {
+            margin-bottom: 10px;
+        }
         li {
             margin-bottom: 4px;
         }
@@ -46,6 +58,24 @@
         }
         .job-title {
             margin-bottom: 4px;
+        }
+        .project {
+            font-weight: bold;
+            color: #1f3a68;
+        }
+        .date {
+            float: right;
+            color: #555;
+            font-size: 0.95em;
+            margin-left: 12px;
+        }
+        .meta {
+            font-style: italic;
+            color: #444;
+        }
+        @media (max-width: 600px) {
+            body { margin: 16px; }
+            .date { float: none; display: block; margin-left: 0; }
         }
     </style>
 </head>
@@ -63,125 +93,214 @@
 <hr>
 
 <div class="section">
-    <h2>RESEARCH INTERESTS</h2>
-    <ul>
-        <li>Uncertainty Quantification in Deep Learning</li>
-        <li>Medical Image Segmentation and Analysis</li>
-        <li>Computer Vision and Machine Learning</li>
-        <li>Bioinformatics and Computational Biology</li>
-        <li>Biomedical Informatics</li>
-    </ul>
-</div>
-
-<div class="section">
     <h2>EDUCATION</h2>
     <p class="job-title"><strong>Bilkent University</strong> — Ankara, Turkey<br>
-    <em>Master of Science in Computer Engineering</em> | GPA: 3.63/4.00<br>
-    Sep 2024 – Present (Expected graduation: Summer 2027)</p>
+    <em>Master of Science in Computer Engineering</em><span class="date">Sep 2024 – Present (Expected graduation: Apr 2027)</span><br>
+    Curriculum GPA: 3.63/4.00 (Cumulative: 3.18/4.00)</p>
 
     <p class="job-title"><strong>University of Tabriz</strong> — Tabriz, Iran<br>
-    <em>B.Sc in Computer Science</em> | GPA: 16.26/20<br>
-    Sep 2019 – Apr 2024</p>
+    <em>B.Sc. in Computer Science</em><span class="date">Sep 2019 – Apr 2024</span><br>
+    Cumulative GPA: 16.26/20</p>
 </div>
 
 <div class="section">
     <h2>RESEARCH EXPERIENCE</h2>
 
-    <p class="job-title"><strong>Bilkent University</strong> — Ankara, Turkey<br>
-    <em>Computer Vision Researcher</em> (Sep 2024 – Present)</p>
-    <ul>
-        <li>Developing a two-component uncertainty decomposition framework for medical image segmentation: epistemic uncertainty via post-hoc SVD-based weight perturbation, and aleatoric uncertainty via the reconstruction residual of a masked-autoencoder-pretrained decoder branch. Validated on ISIC 2018, Kvasir-SEG, and Oxford-IIIT Pets.</li>
-        <li>First-author paper "Decorrelation Is Not Disentanglement: Decoupled Aleatoric and Epistemic Uncertainty in Segmentation" — under review at NeurIPS 2026.</li>
-        <li>Collaborating on a TÜBİTAK-funded project developing automated grading pipelines for handwritten student responses using NLP and OCR.</li>
-    </ul>
+    <h3>Bilkent University — Ankara, Turkey</h3>
+    <ol class="projects">
+        <li>
+            <span class="project">Automated Grading of Handwritten Exams with Vision-Language Models</span> (MSc Thesis)<span class="date">Sep 2026 – Aug 2027</span><br>
+            <span class="meta">Supervisor: Prof. Selim Aksoy</span><br>
+            <span class="meta">Graduate Researcher, Bilkent × Meteksan, TÜBİTAK 1711 AI Ecosystem Call (TÜBİTAK-funded)</span>
+            <ul>
+                <li>Migrated grading from Azure OpenAI to a locally hosted open-weight VLM (Gemma 4 26B MoE, 8-bit, via Ollama on a single RTX 5090) on ~28,000 handwritten answers from ~2,560 students (grades 5–10, five subjects); it matched or outperformed Azure in all 10 grade groups, significantly in 8 (ICC up to 0.95 vs. 0.91).</li>
+                <li>Built the evaluation pipeline (readability check, per-criterion model decisions, deterministic scoring), automatic scoring-config generation from Word rubrics, and OpenCV answer-box cropping; config fixes cut manual review from 444 answers to ~4.</li>
+                <li>Led error analysis of model–teacher disagreements (blind second coding, κ = 0.76): only 32% were model errors, 66% came from rubric ambiguity or teachers not following the rubric; paper in preparation (AIED).</li>
+            </ul>
+        </li>
+        <li>
+            <span class="project">Faithful Reading of Handwritten Mathematics by Vision-Language Models: Uncertainty and Silent Over-Correction</span><span class="date">Jul 2026 – Present</span><br>
+            <span class="meta">Supervisor: Prof. Selim Aksoy</span>
+            <ul>
+                <li>Developed a training-free, sampling-based uncertainty framework for VLMs reading handwritten math (FERMAT): <em>perception entropy</em> predicts transcription errors (AUROC 0.835 on Qwen2.5-VL-3B, 0.828 on Pixtral-12B), beating token-probability and self-stated confidence (PyTorch, Hugging Face Transformers, Qwen-VL, Pixtral, InternVL).</li>
+                <li>Identified an evaluation trap in stratified uncertainty evaluation: an apparently strong result (AUROC 0.78–0.85 across three model families) was an artifact, which I retracted and turned into a methodological contribution.</li>
+                <li>Characterized <em>silent over-correction</em>, where VLMs transcribe the correct value instead of the student's error (a 14B grader then misses errors 85% vs. 11% of the time); proposed a training-free detector (real vs. blank-page token probabilities), built a planted-error benchmark from real handwriting, and validated it under pre-registration (AUROC up to 0.77), beating seven recent baselines; paper in preparation (ACL).</li>
+            </ul>
+        </li>
+    </ol>
 
-    <p class="job-title"><strong>Research Institute for Gastroenterology and Liver Diseases (RIGLD), Shahid Beheshti University of Medical Sciences</strong> — Tehran, Iran<br>
-    <em>Computational Researcher</em> (2020 – Sep 2024)</p>
-    <ul>
-        <li>Worked on metabolomics, lipidomics, and biological network analysis in celiac disease and gastrointestinal disorders under Prof. Mohammad Rostami-Nejad.</li>
-        <li>Used Cytoscape, StringApp, and Python (Pandas, NumPy, Matplotlib) for biological network analysis and visualization.</li>
-        <li>Conducted meta-analysis in R for a systematic review on nutrition therapy in ulcerative colitis; findings presented at the 2023 United European Gastroenterology Week.</li>
-        <li>Co-authored three published journal papers and one paper currently under review.</li>
-    </ul>
+    <h3>Independent Research — Self-directed</h3>
+    <ol class="projects">
+        <li>
+            <span class="project">Training-Free Epistemic Uncertainty for Medical Image Segmentation</span><span class="date">Jan 2026 – Present</span>
+            <ul>
+                <li>Developing a post-hoc method that estimates the epistemic uncertainty of already-trained segmentation networks via data-aware, SVD-based weight perturbation, with no retraining (PyTorch).</li>
+                <li>Benchmarked against 10 methods on 23 shift scenarios across 7 datasets: mean failure-detection AUROC 0.866, matching a 5-network deep ensemble (0.866) and test-time augmentation (0.865), and the most consistent of all 11 methods (worst-case gap 0.035).</li>
+                <li>Ran pre-registered confirmations on untouched data (Prostate158, M&amp;Ms cardiac), which showed no significant advantage over the strongest baselines; found that predicted object size alone explains most methods' signal (AUROC 0.848).</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Research Institute for Gastroenterology and Liver Diseases (RIGLD), Shahid Beheshti University of Medical Sciences — Tehran, Iran</h3>
+    <p class="job-title"><span class="meta">Part-time Researcher (remote), Celiac Disease and Gluten Related Disorders Research Center</span><span class="date">2020 – Present</span><br>
+    <span class="meta">Supervisor: Prof. Mohammad Rostami-Nejad (Head of RIGLD)</span></p>
+    <ol class="projects">
+        <li>
+            <span class="project">Biological Network Analysis in Celiac Disease</span>
+            <ul>
+                <li>Built protein interaction networks (Cytoscape, StringApp) and computed network metrics in Python (Pandas, NumPy, Matplotlib) to identify key genes in celiac disease and their links to cancer-related pathways.</li>
+                <li>Contributed to two published reviews (metabolomics/lipidomics signatures; gluten intake and cancer risk).</li>
+            </ul>
+        </li>
+        <li>
+            <span class="project">Meta-Analysis of Anti-Inflammatory Diet in Ulcerative Colitis</span>
+            <ul>
+                <li>Conducted the meta-analysis in R with Prof. Kamran Rostami (MidCentral DHB, New Zealand), showing a significant reduction in ulcerative colitis risk with an anti-inflammatory diet; presented at UEG Week 2023.</li>
+            </ul>
+        </li>
+        <li>
+            <span class="project">Artificial Intelligence for Celiac Disease Diagnosis and Management</span>
+            <ul>
+                <li>Surveyed and synthesized machine-learning and deep-learning methods for celiac disease diagnosis and follow-up (published review, 2023).</li>
+            </ul>
+        </li>
+        <li>
+            <span class="project">Systematic Review of AI for Celiac Disease Diagnosis</span>
+            <ul>
+                <li>Validated the review's data and statistical reporting before submission, cross-checking the PRISMA flow, extracted study data, tables and figures for consistency (under review, <em>Computer Methods and Programs in Biomedicine</em>).</li>
+            </ul>
+        </li>
+        <li>
+            <span class="project">Meta-Analysis and ML Prediction of <em>H. pylori</em> Eradication</span>
+            <ul>
+                <li>Led a systematic review of 60 RCTs (17,887 patients), fitting a Bayesian hierarchical model (vonoprazan regimens best, OR 1.92) and ML models predicting eradication success (first author; in preparation).</li>
+            </ul>
+        </li>
+    </ol>
 </div>
 
 <div class="section">
     <h2>PUBLICATIONS</h2>
 
-    <p><strong>Under Review:</strong></p>
+    <p><strong>Journal Papers:</strong></p>
     <ul>
-        <li>Maleki, S. <em>Decorrelation Is Not Disentanglement: Decoupled Aleatoric and Epistemic Uncertainty in Segmentation.</em> Submitted to NeurIPS 2026. (First author)</li>
-        <li>Sartie, S., Sheth, A., Maleki, S., Mu, C., Laing, B., Rostami, K. <em>Nutrition Therapy in Ulcerative Colitis: A Systematic Review and Meta-Analysis.</em> Submitted to Nutrients, 2026.</li>
+        <li>Rostami-Nejad, M., Asri, N., Bakhtiari, S., Khalkhal, E., <strong>Maleki, S.</strong>, Rezaei-Tavirani, M., Jahani-Sherafat, S., &amp; Rostami, K. (2024, Feb). Metabolomics and lipidomics signature in celiac disease: a narrative review. <em>Clinical and Experimental Medicine</em>, 24(1), 34. <a href="https://doi.org/10.1007/s10238-024-01295-2">doi:10.1007/s10238-024-01295-2</a></li>
+        <li>Rostami-Nejad, M., Bakhtiari, S., Asri, N., <strong>Maleki, S.</strong>, Rahimi, S., Ahmadzadeh, A., Jahani-Sherafat, S., &amp; Farahani, M. (2024, Feb). The link between gluten intake and the risk of cancers. <em>Gastroenterology and Hepatology From Bed to Bench</em>. <a href="https://journals.sbmu.ac.ir/ghfbb/index.php/ghfbb/article/view/2945">[link]</a></li>
+        <li>Mahmoudi Ghehsareh, M., Asri, N., <strong>Maleki, S.</strong>, Rezaei-Tavirani, M., Jahani-Sherafat, S., &amp; Rostami-Nejad, M. (2023, Oct). Application of Artificial Intelligence in Celiac Disease: from diagnosis to patient follow-up. <em>Iranian Journal of Blood and Cancer</em>, 15(3), 125–137. <a href="https://ijbc.ir/article-1-1476-en.html">[link]</a></li>
     </ul>
 
     <p><strong>Conference Papers:</strong></p>
     <ul>
-        <li>Maleki, S. and Izadkhah, H. (2022). <em>Optimizing GoogleNet using New Connections and Auxiliary Layers Information.</em> ICSPIS 2022, IEEE. (First author)</li>
-        <li>Maleki, S. and Izadkhah, H. (2023). <em>Vehicle Detection using Optimized GoogLeNet.</em> ICAISV 2023. (First author, poster)</li>
+        <li><strong>Maleki, S.</strong> &amp; Izadkhah, H. (2023, May). Vehicle Detection using Optimized GoogLeNet. In <em>International Conference on Artificial Intelligence and Smart Vehicle (ICAISV)</em>, poster. <a href="https://aismartvehicle.aut.ac.ir/accepted-papers-for-poster/">[link]</a></li>
+        <li><strong>Maleki, S.</strong> &amp; Izadkhah, H. (2022, December). Optimizing GoogleNet using New Connections and Auxiliary Layers Information. In <em>2022 8th Iranian Conference on Signal Processing and Intelligent Systems (ICSPIS)</em> (pp. 1–6). IEEE. <a href="https://ieeexplore.ieee.org/document/10043963">[link]</a></li>
     </ul>
 
-    <p><strong>Journal Papers:</strong></p>
+    <p><strong>Under Review:</strong></p>
     <ul>
-        <li>Rostami-Nejad, M. et al. (2024). <em>Metabolomics and lipidomics signature in celiac disease; a review.</em> Clinical and Experimental Medicine.</li>
-        <li>Mahmoudi Ghehsareh, M. et al. (2023). <em>Application of Artificial Intelligence in Celiac Disease: from diagnosis to patient follow-up.</em> Iranian Journal of Blood and Cancer.</li>
-        <li>Rostami-Nejad, M. et al. (2024). <em>The link between gluten intake and the risk of cancers.</em> Gastroenterology and Hepatology From Bed to Bench (GHFBB).</li>
+        <li>Mahmoudi Ghehsareh, M., Vahidi, F., Azizmohammad Looha, M., Kaffash, N., Asri, N., <strong>Maleki, S.</strong>, Ahmadipour, S., Sadeghi, A., &amp; Rostami-Nejad, M. (2026). <em>From Villous Atrophy to Visual Intelligence: Artificial Intelligence for Celiac Disease Diagnosis—A Systematic Review</em>. Submitted to <em>Computer Methods and Programs in Biomedicine</em>.</li>
+        <li>Sartie, S., Sheth, A., <strong>Maleki, S.</strong>, Mu, C., Laing, B., &amp; Rostami, K. (2026). <em>Nutrition Therapy in Ulcerative Colitis: A Systematic Review and Meta-Analysis on the Efficacy of an Anti-inflammatory Diet</em>. Submitted to <em>Intestinal Research</em>. Previously presented at <em>United European Gastroenterology (UEG) Week</em>, 2023.</li>
+    </ul>
+
+    <p><strong>In Preparation:</strong></p>
+    <ul>
+        <li><strong>Maleki, S.</strong>, Koyuncu, A., Aksoy, S., &amp; Oner, D. (2026). <em>When Correctness Is the Prediction: An Evaluation Trap in Sampling-Based Uncertainty for Handwritten Mathematics</em>.</li>
+        <li><strong>Maleki, S.</strong> (2026). <em>Training-Free Epistemic Uncertainty for Segmentation Models via SVD-Based Weight Perturbation</em>.</li>
+        <li><strong>Maleki, S.</strong>, Jahani-Sherafat, S., Rostami-Nejad, M., &amp; Rostami, K. (2026). <em>Machine Learning-Based Prediction of Antibiotic Combination Efficacy for Helicobacter pylori Eradication Using Regional Resistance Profiles</em>. Target journal: <em>Helicobacter</em>.</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>VOLUNTEER WORK</h2>
+    <p class="job-title"><strong>Vanda International Science Olympiad</strong><span class="date">Online, 2020</span><br>
+    <em>Volunteer Judge</em></p>
+    <ul>
+        <li>Evaluated and scored contestants' written solutions as part of the judging panel.</li>
+    </ul>
+    <p class="job-title"><strong>International Junior Math Olympiad (IJMO)</strong><span class="date">Online, 2020</span><br>
+    <em>Volunteer Judge</em></p>
+    <ul>
+        <li>Evaluated and scored contestants' written solutions as part of the judging panel.</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>TEACHING</h2>
+    <p class="job-title"><strong>Bilkent University</strong> — Ankara, Turkey<br>
+    <em>Teaching Assistant</em><span class="date">Fall 2024 – Spring 2026</span></p>
+    <ul>
+        <li>Algorithms and Programming I (CS101) — Spring 2026</li>
+        <li>Introduction to Data Analysis for Social Sciences (CS125) — Spring 2025</li>
+        <li>Introduction to Computer Applications and Programming (CS121) — Fall 2024</li>
+    </ul>
+    <p><em>Duties:</em> grading, weekly problem-solving and concept-explanation sessions, project planning, and helping students with programming assignments.</p>
+
+    <p class="job-title"><strong>University of Tabriz</strong> — Tabriz, Iran<br>
+    <em>Teaching Assistant</em><span class="date">Fall 2019 – Spring 2023</span></p>
+    <ul>
+        <li>Calculus 1, Calculus 2, Combinatorics, Data Structures, Statistics and Probability, Computer Graphics</li>
+    </ul>
+    <p><em>Duties:</em> weekly problem-solving and concept-explanation sessions, and project planning.</p>
+</div>
+
+<div class="section">
+    <h2>SKILLS</h2>
+    <p><strong>Technical Skills:</strong></p>
+    <ul>
+        <li><em>Areas:</em> Deep Learning, Computer Vision, Vision-Language Models, Uncertainty Quantification, Bioinformatics, Data Analysis</li>
+        <li><em>Programming:</em> Python, C, R</li>
+        <li><em>Frameworks &amp; Tools:</em> PyTorch, Keras, Hugging Face Transformers, scikit-learn, OpenCV, SymPy, Ollama, STRING database, Cytoscape</li>
+        <li><em>Databases, Storage &amp; Cloud:</em> PostgreSQL, MySQL, NoSQL, IBM Db2, MinIO (S3, boto3), Azure OpenAI, IBM Watson, IBM Cloud</li>
+    </ul>
+    <p><strong>Languages:</strong></p>
+    <ul>
+        <li>Farsi: Native</li>
+        <li>English: Professional proficiency; TOEFL iBT 100/120 (5.0/6, CEFR C1), October 2026</li>
+        <li>German: Elementary | Turkish: Elementary</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>SELECTED UNIVERSITY COURSES (B.Sc.)</h2>
+    <ul>
+        <li>Introduction to Matrices and Linear Algebra (19/20, A+), Probability I (19/20, A+), Calculus I (20/20, A+)</li>
+        <li>Data Structures (18/20, A+), Design and Algorithm Analysis (18/20, A+), Advanced Programming (20/20, A+)</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>SELECTED COURSES &amp; CERTIFICATES</h2>
+    <ul>
+        <li><a href="https://www.coursera.org/specializations/deep-learning">Deep Learning Specialization</a> (Andrew Ng, DeepLearning.AI, Coursera)<span class="date">Aug 2021</span></li>
+        <li><a href="https://www.coursera.org/learn/machine-learning">Machine Learning</a> (Andrew Ng, Stanford University, Coursera)<span class="date">Sep 2021</span></li>
+        <li><a href="https://www.youtube.com/watch?v=NcCGxDIxQWQ">Advanced Bioinformatics</a> (instructor: Ali Sharifi-Zarchi)<span class="date">Feb 2023</span></li>
+        <li><a href="https://maktabkhooneh.org/course/%D9%85%D9%82%D8%AF%D9%85%D9%87-%D8%A8%DB%8C%D9%88%D8%A7%D9%86%D9%81%D9%88%D8%B1%D9%85%D8%A7%D8%AA%DB%8C%DA%A9-%D8%AA%D8%AD%D9%84%DB%8C%D9%84-%D8%AF%D8%A7%D8%AF%D9%87-%D8%B2%DB%8C%D8%B3%D8%AA%DB%8C-mk374/">Bioinformatics Training Course: Biological Data Analysis</a> (instructor: Ali Sharifi-Zarchi, Maktabkhooneh)<span class="date">Jan 2023</span></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/verify/B4MR76L87D8B">Data Science Math Skills</a> (Duke University, Coursera)<span class="date">Oct 2021</span></li>
+        <li><a href="https://www.credly.com/badges/4dcaa995-954e-4243-a04f-e975d3d60dbc">Data Analysis with Python</a> (IBM, Coursera)<span class="date">Sep 2021</span></li>
     </ul>
 </div>
 
 <div class="section">
     <h2>HONORS &amp; AWARDS</h2>
     <ul>
-        <li><strong>Fully Funded Master's Scholarships</strong> (2024) — Bilkent University, Koç University, Arizona State University, University of Oklahoma.</li>
-        <li><strong>Top Rank Student</strong> (2019) — Ranked 1st among Computer Science freshmen at University of Tabriz.</li>
-        <li><strong>National University Entrance Exam</strong> (2019) — Ranked in the top 1% out of 140,000 students.</li>
-        <li><strong>Accepted at Sharif University of Technology and Amirkabir University of Technology</strong> (2019).</li>
-        <li><strong>High School Top Rank Student</strong> (2014–2018) — Ranked 1st among 90 students at Shahid Motahari High School for 4 years.</li>
-        <li><strong>Olympiad Judge</strong> — Vanda 2020 (International Science Olympiad) and IJMO 2020 (International Junior Math Olympiad).</li>
+        <li><strong>Bilkent University Graduate Scholarship</strong> (fully funded M.Sc.): full tuition waiver plus monthly stipend, worth ≈ 29,000 USD per year.<span class="date">Sep 2024 – Present</span></li>
+        <li><strong>Top-ranked student:</strong> Ranked 1st among nearly 100 Computer Science and Mathematics freshmen at the University of Tabriz (first semester).<span class="date">2019</span></li>
+        <li><strong>National University Entrance Exam (Konkur):</strong> Ranked among the top 1% of about 140,000 participants, earning a government-funded full tuition waiver at a public university in Iran.<span class="date">2019</span></li>
     </ul>
 </div>
 
 <div class="section">
-    <h2>TEACHING</h2>
-    <p><strong>Teaching Assistant — Bilkent University:</strong></p>
+    <h2>INTERESTS AND HOBBIES</h2>
     <ul>
-        <li>Algorithms and Programming I (CS101) — Spring 2026</li>
-        <li>Introduction to Data Analysis for Social Sciences (CS125) — Spring 2025</li>
-        <li>Introduction to Computer Applications and Programming (CS121) — Fall 2024</li>
-    </ul>
-
-    <p><strong>Teaching Assistant — University of Tabriz:</strong></p>
-    <ul>
-        <li>Calculus 1 — Fall 2019</li>
-        <li>Combinations — Fall 2020</li>
-        <li>Calculus 2 — Spring 2021</li>
-        <li>Data Structures — Fall 2021</li>
-        <li>Statistics and Probability — Spring 2023</li>
-        <li>Computer Graphics — Spring 2023</li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2>SKILLS</h2>
-    <p><strong>Top Skills:</strong> Deep Learning, Uncertainty Quantification, Medical Image Analysis, Bioinformatics, Data Analysis</p>
-    <p><strong>Tools &amp; Technologies:</strong> PyTorch, Keras, Python, R, C, Cytoscape, STRING database, NoSQL, MySQL, GitHub</p>
-</div>
-
-<div class="section">
-    <h2>LANGUAGES</h2>
-    <ul>
-        <li>Persian: Native</li>
-        <li>English: Professional proficiency — TOEFL iBT: 94</li>
-        <li>Turkish: Elementary</li>
-        <li>German: Elementary</li>
+        <li><strong>Tennis and Badminton:</strong> Regular play builds focus, quick decision-making under pressure, and persistence, qualities I bring to complex research projects.</li>
+        <li><strong>Hiking:</strong> Adapting to different terrains mirrors the adaptability that interdisciplinary research demands.</li>
     </ul>
 </div>
 
 <div class="section">
     <h2>ACADEMIC REFEREES</h2>
     <ul>
-        <li>Kamran Rostami: kamran.rostami@midcentraldhb.govt.nz</li>
-        <li>Mohammad Rostami-Nejad: m.rostamii@sbmu.ac.ir</li>
-        <li>Habib Izadkhah: izadkhah@tabrizu.ac.ir</li>
+        <li><strong>Prof. Selim Aksoy</strong> — M.Sc. Thesis Supervisor; Department of Computer Engineering, Bilkent University. <a href="mailto:saksoy@cs.bilkent.edu.tr">saksoy@cs.bilkent.edu.tr</a></li>
+        <li><strong>Prof. Mohammad Rostami-Nejad</strong> — Research Supervisor; Professor of Clinical Immunology and Head of the Research Institute for Gastroenterology and Liver Diseases (RIGLD), Shahid Beheshti University of Medical Sciences. <a href="mailto:m.rostamii@sbmu.ac.ir">m.rostamii@sbmu.ac.ir</a></li>
     </ul>
 </div>
 
